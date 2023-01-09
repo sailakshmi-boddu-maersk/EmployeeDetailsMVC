@@ -1,4 +1,4 @@
-package com.slb.employee;
+package com.slb.controller;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,6 +11,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
+
+import com.slb.model.Employee;
+import com.slb.service.EmployeeServiceImpl;
 
 import jakarta.servlet.http.HttpServletRequest;
 

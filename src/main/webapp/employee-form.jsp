@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1" isELIgnored="false"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@page import="com.slb.employee.Employee"%>
+<%@page import="com.slb.model.Employee"%>
 <!DOCTYPE html>
 <html>
 <head>

@@ -1,9 +1,11 @@
-package com.slb.employee;
+package com.slb.mapper;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import org.springframework.jdbc.core.RowMapper;
+
+import com.slb.model.Employee;
 
 public class EmployeeRowMapper implements RowMapper<Employee>{
 	public Employee mapRow(ResultSet resultSet, int rowNum) throws SQLException {

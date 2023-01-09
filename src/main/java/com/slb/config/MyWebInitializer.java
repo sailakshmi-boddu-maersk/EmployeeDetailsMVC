@@ -2,7 +2,7 @@ package com.slb.config;
 import jakarta.servlet.Filter;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
-import com.slb.employee.LoginFilter;
+import com.slb.filter.LoginFilter;
 
 public class MyWebInitializer extends AbstractAnnotationConfigDispatcherServletInitializer {
 

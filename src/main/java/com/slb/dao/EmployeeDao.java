@@ -1,11 +1,15 @@
-package com.slb.employee;
+package com.slb.dao;
 
 import java.util.List;
 
-public interface EmployeeService {
+import com.slb.model.Employee;
+
+
+
+public interface EmployeeDao {
 //	void connectionDb();
 	void createEmpRecord(Employee emp);
-	List<Employee>selectEmpRecords();
+	List<Employee> selectEmpRecords();
 	Employee selectEmp(int empId);
 	void updateEmp(Employee emp);
 	void deleteEmpRecord(int empId);

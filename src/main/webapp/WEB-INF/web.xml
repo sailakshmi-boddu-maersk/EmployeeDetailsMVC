@@ -8,7 +8,7 @@
   	<filter-name>LoginFilter</filter-name>
   	<display-name>LoginFilter</display-name>
   	<description></description>
-  	<filter-class>com.slb.employee.LoginFilter</filter-class>
+  	<filter-class>com.slb.filter.LoginFilter</filter-class>
   </filter>
   <filter-mapping>
   	<filter-name>LoginFilter</filter-name>

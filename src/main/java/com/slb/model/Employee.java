@@ -1,15 +1,15 @@
-package com.slb.employee;
+package com.slb.model;
 
 
 public class Employee {
 	
 	
-	int id;
-	String firstName;
-	String LastName;
-	float salary;
-	int addressId;
-	String address;
+	public int id;
+	public String firstName;
+	public String LastName;
+	public float salary;
+	public int addressId;
+	public String address;
 	
 	public Employee() {
 		super();

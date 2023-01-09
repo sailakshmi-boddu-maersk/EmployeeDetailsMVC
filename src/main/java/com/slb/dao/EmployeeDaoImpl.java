@@ -1,4 +1,4 @@
-package com.slb.employee;
+package com.slb.dao;
 
 import java.sql.Statement;
 import java.util.ArrayList;
@@ -11,6 +11,9 @@ import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
+
+import com.slb.mapper.EmployeeRowMapper;
+import com.slb.model.Employee;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
