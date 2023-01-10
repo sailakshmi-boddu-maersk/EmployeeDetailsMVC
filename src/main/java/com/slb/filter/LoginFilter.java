@@ -31,7 +31,7 @@ public class LoginFilter extends HttpFilter implements Filter {
 	    HttpServletResponse res=(HttpServletResponse)response;
 	    String action = req.getServletPath();
 		HttpSession session=req.getSession();
-		if(action.equals("/index.jsp")) {
+		if(action.equals("/index.jsp") || action.equals("/")) {
 			chain.doFilter(request, response);
 		}
 		else {
@@ -41,12 +41,13 @@ public class LoginFilter extends HttpFilter implements Filter {
 			session.setAttribute("uname",uname );
 			session.setAttribute("pass",pass);
 			if(uname.equals("sai")&& pass.equals("1234")) {
+				session.setAttribute("userMsg","");
 				chain.doFilter(request, response);
 			}
 			else {
-				RequestDispatcher dispatcher = req.getRequestDispatcher("index.jsp");
-				req.setAttribute("userMsg","Invalid User!! Enter valid credentials");
-				dispatcher.forward(req, res);
+				session.setAttribute("userMsg","Invalid User!! Enter valid credentials");
+                res.sendRedirect("index");
+//				dispatcher.forward(req, res);
 			}
 	    }
 	    else if(action.equals("/logout")) {

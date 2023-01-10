@@ -4,6 +4,7 @@ import javax.sql.DataSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.web.servlet.ViewResolver;
@@ -15,7 +16,9 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 @EnableWebMvc
 @Configuration
 @ComponentScan("com.slb")
-public class MyConfig{
+//@EnableAspectJAutoProxy
+@EnableAspectJAutoProxy(proxyTargetClass=true)
+public class MyConfig implements WebMvcConfigurer{
 	@Bean
 	public DataSource dataSource() {
 		DriverManagerDataSource dataSource = new DriverManagerDataSource();
@@ -32,5 +35,14 @@ public class MyConfig{
 		jdbcTemplate.setDataSource(dataSource());
 		return jdbcTemplate;
 	}
+	
+	@Bean
+	 public ViewResolver configureViewResolver() {
+	     InternalResourceViewResolver viewResolve = new InternalResourceViewResolver();
+	     viewResolve.setPrefix("/WEB-INF/views/");
+	     viewResolve.setSuffix(".jsp");
+	 
+	     return viewResolve;
+	 }
 
 }

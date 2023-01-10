@@ -23,15 +23,25 @@ public class EmployeeController {
 	  @Autowired
 	  EmployeeServiceImpl employeeServiceImpl;
 	  
+	  @RequestMapping("/")
+	  public String indexPage() {
+		  return "index";
+	  }
+	  
+	  @RequestMapping("/home")
+	  public String homePage() {
+		  return "home-page";
+	  }
+	  
 	  @RequestMapping("/login")
 	  public String login() {
 //		  employeeServiceImpl.connectionDb();
-		  return "home-page.jsp";
+		  return "home-page";
 	  }
 	  
 	  @RequestMapping("/new")
 	  public String newForm() {
-		  return "employee-form.jsp";
+		  return "employee-form";
 	  }
 	  
 	  @RequestMapping("/insert")
@@ -46,7 +56,7 @@ public class EmployeeController {
 		  Employee emp=new Employee();
 		  emp=employeeServiceImpl.selectEmp(id);
 		  mv.addObject("emp",emp);
-		  mv.setViewName("employee-form.jsp");
+		  mv.setViewName("employee-form");
 		  return mv;
 	  }
 	  
@@ -69,7 +79,7 @@ public class EmployeeController {
 		  List<Employee> empList=new ArrayList<Employee>();
 		  empList=employeeServiceImpl.selectEmpRecords();
 		  model.addAttribute("listEmployee",empList);
-		  return "employee-list.jsp";
+		  return "employee-list";
 	  }
 	  
 	  @RequestMapping("/empRec")
@@ -77,7 +87,7 @@ public class EmployeeController {
 		  
 		  ModelAndView mv=new ModelAndView();
 		  mv.addObject("actionEditDelete",action);
-		  mv.setViewName("employeeName.jsp");
+		  mv.setViewName("employeeName");
 		  return mv;  
 	  }
 	  
@@ -90,13 +100,13 @@ public class EmployeeController {
 		  if(empList.isEmpty()) {
 			  mv.addObject("actionEditDelete",action);
 			  mv.addObject("msg","Error,unable to find employee details!!"+"please provide correct employee name..");
-			  mv.setViewName("employeeName.jsp");
+			  mv.setViewName("employeeName");
 			  return mv;
 		  }
 		  else {
 			  mv.addObject("actionEditDelete",action);
 			  mv.addObject("listEmployeeByName",empList);
-			  mv.setViewName("employeeListByName.jsp");
+			  mv.setViewName("employeeListByName");
 			  return mv;
 		  }  
 	  }	 
