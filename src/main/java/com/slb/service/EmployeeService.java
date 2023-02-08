@@ -6,12 +6,12 @@ import com.slb.model.Employee;
 
 public interface EmployeeService {
 //	void connectionDb();
-	void createEmpRecord(Employee emp);
+	int createEmpRecord(Employee emp);
 	List<Employee>selectEmpRecords();
 	Employee selectEmp(int empId);
-	void updateEmp(Employee emp);
-	void deleteEmpRecord(int empId);
-	int addressExists(int addressId);
-	void insertAddressRecord(int empId,String address);
+	int updateEmp(Employee emp);
+	int deleteEmpRecord(int empId);
+//	int addressExists(int addressId);
+//	int insertAddressRecord(int empId,String address);
 	public List<Employee>selectEmpByName(String firstName);
 }

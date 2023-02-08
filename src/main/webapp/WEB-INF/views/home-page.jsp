@@ -79,7 +79,7 @@ width:100%;
   <div class="header">
   <h1 align="center">Employee Management</h1>
   <form action="logout">
-  <input type="submit" value="Logout">
+  <input type="submit" value="Log out">
   </form>
   </div>
   <div class="content">

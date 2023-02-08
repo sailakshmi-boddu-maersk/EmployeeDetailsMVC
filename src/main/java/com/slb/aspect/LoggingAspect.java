@@ -47,7 +47,7 @@ public class LoggingAspect {
                 .append("(");
 		if(methodName.equals("updateEmp") || methodName.equals("createEmpRecord")) {
 			Employee emp=(Employee) args[0];
-			builder.append(emp.id+","+emp.firstName+","+emp.LastName+","+emp.addressId+","+emp.address);
+			builder.append(emp.id+","+emp.firstName+","+emp.lastName+","+emp.addressId+","+emp.address);
 		}
 		else {
 			for ( int i = 0; i < args.length; i++ ) {

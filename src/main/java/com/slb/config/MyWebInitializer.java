@@ -1,5 +1,8 @@
 package com.slb.config;
 import jakarta.servlet.Filter;
+
+import org.springframework.web.context.WebApplicationContext;
+import org.springframework.web.servlet.DispatcherServlet;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
 import com.slb.filter.LoginFilter;
@@ -29,5 +32,12 @@ public class MyWebInitializer extends AbstractAnnotationConfigDispatcherServletI
 	protected Filter[] getServletFilters(){
 		return new Filter[]{ new LoginFilter()};
 	}
+	
+	@Override
+    protected DispatcherServlet createDispatcherServlet(WebApplicationContext servletAppContext) {
+        final DispatcherServlet dispatcherServlet = (DispatcherServlet) super.createDispatcherServlet(servletAppContext);
+        dispatcherServlet.setThrowExceptionIfNoHandlerFound(true);
+        return dispatcherServlet;
+    }
 
 }

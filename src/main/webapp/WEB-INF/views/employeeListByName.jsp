@@ -26,7 +26,7 @@ color:blue;
   <div class="header">
     <h1 align="center">Employee Management</h1>
     <h2 align="center">
-      <a href="home">get back to home page</a><br>
+      <a href="home">Get back to home page</a><br>
     </h2>
     </div>
     <h1 align="center">List of Employees</h1>

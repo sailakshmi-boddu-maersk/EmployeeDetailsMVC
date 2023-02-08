@@ -75,11 +75,11 @@ color:blue;
 <c:if test="${msg!=null}">
 <h3 align="center">${msg}</h3><br>
 <h2 align="center">
-<a href="new">do you want to create new employee </a><br>
+<a href="new">Do you want to create new employee </a><br>
 </h2>
 </c:if>
 <h2 align="center">
-      <a href="home">get back to home page</a><br>
+      <a href="home">Get back to home page</a><br>
 </h2>
 
 </body>

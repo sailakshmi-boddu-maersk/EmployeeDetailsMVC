@@ -18,9 +18,12 @@ public class EmployeeServiceImpl implements EmployeeService {
 //	public void connectionDb() {
 //		empDaoImpl.connectionDb();
 //	}
-
-	public void createEmpRecord(Employee emp) {
-		employeeDaoImpl.createEmpRecord(emp);
+	
+	public int createEmpRecord(Employee emp) {
+		if(employeeDaoImpl.addressExists(emp.addressId)==0){
+			employeeDaoImpl.insertAddressRecord(emp.addressId,emp.address);
+		}
+		return employeeDaoImpl.createEmpRecord(emp);
 	}
 	public List<Employee> selectEmpRecords(){
 		List<Employee> emp= new ArrayList<Employee>();
@@ -33,22 +36,22 @@ public class EmployeeServiceImpl implements EmployeeService {
 		return emp;
 		
 	}
-	public void updateEmp(Employee emp) {
+	public int updateEmp(Employee emp) {
 		if(employeeDaoImpl.addressExists(emp.addressId)==0){
 			employeeDaoImpl.insertAddressRecord(emp.addressId,emp.address);
 		}
-		employeeDaoImpl.updateEmp(emp);
+		return employeeDaoImpl.updateEmp(emp);
 	}
-	public void deleteEmpRecord(int empId) {
-	    employeeDaoImpl.deleteEmpRecord(empId);
+	public int deleteEmpRecord(int empId) {
+	    return employeeDaoImpl.deleteEmpRecord(empId);
 	}
-	public int addressExists(int addressId) {
-		int isExists=employeeDaoImpl.addressExists(addressId);
-		return isExists;
-	}
-	public void insertAddressRecord(int empId,String address) {
-		employeeDaoImpl.insertAddressRecord(empId, address);
-	}
+//	public int addressExists(int addressId) {
+//		int isExists=employeeDaoImpl.addressExists(addressId);
+//		return isExists;
+//	}
+//	public int insertAddressRecord(int empId,String address) {
+//		return employeeDaoImpl.insertAddressRecord(empId, address);
+//	}
 	public List<Employee>selectEmpByName(String firstName) {
 		List<Employee> emp= new ArrayList<Employee>();
 		emp=employeeDaoImpl.selectEmpByName(firstName);

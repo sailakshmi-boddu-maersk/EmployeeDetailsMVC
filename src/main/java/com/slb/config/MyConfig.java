@@ -13,7 +13,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.view.BeanNameViewResolver;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
-@EnableWebMvc
+//@EnableWebMvc
 @Configuration
 @ComponentScan("com.slb")
 //@EnableAspectJAutoProxy
@@ -29,10 +29,28 @@ public class MyConfig implements WebMvcConfigurer{
 		return dataSource;
 	}
 	
+  @Bean
+	public DataSource dataSource1() {
+		DriverManagerDataSource dataSource = new DriverManagerDataSource();
+		dataSource.setDriverClassName("org.h2.Driver");
+//		dataSource.setUrl("jdbc:h2:mem:test");
+		dataSource.setUrl("jdbc:h2:tcp://localhost/~/test");
+		dataSource.setUsername("sa");
+		dataSource.setPassword("");
+		return dataSource;	}
+	
+	
 	@Bean
 	public JdbcTemplate jdbcTemplate() {
 		JdbcTemplate jdbcTemplate = new JdbcTemplate();
 		jdbcTemplate.setDataSource(dataSource());
+		return jdbcTemplate;
+	}
+	
+	@Bean
+	public JdbcTemplate jdbcTemplate1() {
+		JdbcTemplate jdbcTemplate = new JdbcTemplate();
+		jdbcTemplate.setDataSource(dataSource1());
 		return jdbcTemplate;
 	}
 	

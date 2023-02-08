@@ -52,12 +52,12 @@ color:red;
   </div>
   
 <h2 align=center >
-User Login <br><br>
+User Log in <br><br>
 <form action="login" method="post">
-enter username: <input type="text" name="uname"><br>
-enter password:<input type="password" name="password"><br>
+Username: <input type="text" name="uname"><br>
+Password:<input type="password" name="password"><br>
 <div class="submit">
-<input type="submit" value="login">
+<input type="submit" value="Log in">
 </div>
 </form>
 </h2>

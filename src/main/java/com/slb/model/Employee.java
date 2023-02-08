@@ -1,23 +1,24 @@
 package com.slb.model;
 
+import org.springframework.stereotype.Component;
 
+@Component
 public class Employee {
 	
 	
 	public int id;
 	public String firstName;
-	public String LastName;
+	public String lastName;
 	public float salary;
 	public int addressId;
 	public String address;
-	
 	public Employee() {
 		super();
 	}
 	public Employee(String firstName, String lastName, float salary, int addressId, String address) {
 		super();
 		this.firstName = firstName;
-		LastName = lastName;
+		this.lastName = lastName;
 		this.salary = salary;
 		this.addressId = addressId;
 		this.address = address;
@@ -26,7 +27,7 @@ public class Employee {
 		super();
 		this.id = id;
 		this.firstName = firstName;
-		this.LastName = lastName;
+		this.lastName = lastName;
 		this.salary = salary;
 		this.addressId = addressId;
 		this.address=address;
@@ -44,10 +45,10 @@ public class Employee {
 		this.firstName = firstName;
 	}
 	public String getLastName() {
-		return LastName;
+		return lastName;
 	}
 	public void setLastName(String lastName) {
-		LastName = lastName;
+		this.lastName = lastName;
 	}
 	public float getSalary() {
 		return salary;

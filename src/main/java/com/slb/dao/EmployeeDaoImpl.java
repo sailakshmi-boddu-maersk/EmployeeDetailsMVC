@@ -26,9 +26,23 @@ public class EmployeeDaoImpl implements EmployeeDao{
 	@Autowired
 	JdbcTemplate jdbcTemplate;
 	
-	public void createEmpRecord(Employee emp) {
+	@Autowired
+	Employee emp;
+
+	public EmployeeDaoImpl(JdbcTemplate jdbcTemplate) {
+		super();
+		this.jdbcTemplate = jdbcTemplate;
+	}
+
+	public EmployeeDaoImpl() {
+		// TODO Auto-generated constructor stub
+	}
+
+
+	public int createEmpRecord(Employee emp) {
 		String SQL="insert into employees(first_name,last_name,salary,address_id) values(?,?,?,?)";
-		jdbcTemplate.update(SQL,emp.firstName,emp.LastName,emp.salary,emp.addressId);
+		int rows=jdbcTemplate.update(SQL,emp.firstName,emp.lastName,emp.salary,emp.addressId);
+		return rows;
 	}
 	
 	public List<Employee> selectEmpRecords(){
@@ -40,20 +54,21 @@ public class EmployeeDaoImpl implements EmployeeDao{
 	public Employee selectEmp(int empId){
 		String SQL="SELECT emp.emp_id, emp.first_Name,emp.last_name,emp.salary,emp.address_id,ad.address "
 				+ "FROM employees emp LEFT JOIN address ad ON emp.address_id =ad.ad_id where emp_id="+empId;
-		return jdbcTemplate.queryForObject(SQL,new EmployeeRowMapper() );
+		emp= jdbcTemplate.queryForObject(SQL,new EmployeeRowMapper() );
+		return emp;
 	}
 	
-	public void updateEmp(Employee emp) {
+	public int updateEmp(Employee emp) {
 //		if(addressExists(emp.addressId)==0){
 //			insertAddressRecord(emp.addressId,emp.address);
 //		}
 		String SQL="update employees set first_Name = ?,last_name= ?, salary =? ,address_id=? where emp_id = ?;";
-	    jdbcTemplate.update(SQL,emp.firstName,emp.LastName,emp.salary,emp.addressId,emp.id);
+	   return jdbcTemplate.update(SQL,emp.firstName,emp.lastName,emp.salary,emp.addressId,emp.id);
 	}
 	
-	public void deleteEmpRecord(int empId) {
+	public int deleteEmpRecord(int empId) {
 		String SQL="delete from employees where emp_id= "+empId;
-		jdbcTemplate.update(SQL);
+		return jdbcTemplate.update(SQL);
 		
 	}
 	
@@ -62,9 +77,9 @@ public class EmployeeDaoImpl implements EmployeeDao{
 		return jdbcTemplate.queryForObject(SQL,int.class);
 	}
 	
-	public void insertAddressRecord(int addressId,String address) {
+	public int insertAddressRecord(int addressId,String address) {
 		String query="insert into address(ad_id,address) values(?,?)";
-		jdbcTemplate.update(query,addressId,address);
+		return jdbcTemplate.update(query,addressId,address);
 	}
 	
 	public List<Employee> selectEmpByName(String firstName){

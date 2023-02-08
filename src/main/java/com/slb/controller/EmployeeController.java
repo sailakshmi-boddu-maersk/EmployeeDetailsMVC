@@ -23,7 +23,14 @@ public class EmployeeController {
 	  @Autowired
 	  EmployeeServiceImpl employeeServiceImpl;
 	  
-	  @RequestMapping("/")
+	  
+//	  @Autowired
+	  public EmployeeController(EmployeeServiceImpl employeeServiceImpl) {
+		super();
+		this.employeeServiceImpl = employeeServiceImpl;
+	}
+
+	@RequestMapping("/")
 	  public String indexPage() {
 		  return "index";
 	  }
@@ -35,7 +42,6 @@ public class EmployeeController {
 	  
 	  @RequestMapping("/login")
 	  public String login() {
-//		  employeeServiceImpl.connectionDb();
 		  return "home-page";
 	  }
 	  
@@ -99,7 +105,7 @@ public class EmployeeController {
 		  empList=employeeServiceImpl.selectEmpByName(firstName);
 		  if(empList.isEmpty()) {
 			  mv.addObject("actionEditDelete",action);
-			  mv.addObject("msg","Error,unable to find employee details!!"+"please provide correct employee name..");
+			  mv.addObject("msg","Error,unable to find employee details!! "+"Please provide correct employee name..");
 			  mv.setViewName("employeeName");
 			  return mv;
 		  }
